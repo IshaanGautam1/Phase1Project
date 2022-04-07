@@ -1,0 +1,178 @@
+import java.util.*;
+import java.io.File;
+public class MyProjectMain {
+	public static void addFile() {
+		try{
+				Scanner sc = new Scanner(System.in);
+			System.out.println("");
+			System.out.print("Please enter the name of the file- ");
+			String name = sc.next();
+		     
+	        File myObj = new File("./files/" + name + ".txt");
+	        if (myObj.createNewFile()) {
+	          System.out.println("File created: " + myObj.getName());
+	        } else {
+	          System.out.println("File already exists.");
+	        }
+	      } catch (Exception e) {
+	        System.out.println("An error occurred.");
+	        addFile();
+	      }
+	}
+	public static void deleteFile() {
+		try {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("");
+		System.out.print("Please enter the name of the file to delete- ");
+		String name = sc.next();
+		
+			 File myObj = new File("./files/" + name + ".txt");
+			 if(myObj.delete()) {
+				 System.out.println("File has been deleted");
+			 }
+			 else {
+				 System.out.println("File does not exist");
+			 }
+		}catch(Exception e) {
+			System.out.println("An error occured.\nPlease enter a valid file name");
+		}
+		
+	}
+	public static ArrayList<String> fileLists() {
+		File folder = new File("./files");
+		File[] listOfFiles = folder.listFiles();
+		int n = listOfFiles.length;
+		ArrayList<String> list = new ArrayList<String>();
+
+		for (int i = 0; i < n; i++) {
+		  
+		    list.add(listOfFiles[i].getName());
+		  
+		}
+		Collections.sort(list);
+		return list;
+	}
+	
+	public static void searchFile() {
+		try {
+		Scanner sc = new Scanner(System.in);
+		String name = sc.next();
+		int flag=0;
+		ArrayList<String> list = fileLists();
+		for(String filename : list) 
+			if(filename.equals(name)) {
+				flag=1;
+				System.out.println("File "+name+" is present in the directory.");
+			}
+		if(flag==0) {
+			System.out.println("File "+name+" is not present in the directory.");
+		}
+		}
+		catch(Exception e){
+			System.out.println("An error Occured.\nPlease enter a valid File name.");
+		}
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+			while(true) {
+		
+			try{
+				System.out.println("--------  LockedMe.com  --------");
+				System.out.println("");
+				System.out.println("            developed by- Ishaan Gautam");
+				System.out.println();
+				System.out.println();
+				System.out.println("-----------MAIN MENU-----------"); 
+				System.out.println("");
+				System.out.println("PLEASE SELECT AN OPTION FROM THE MENU");
+				System.out.println("");
+				System.out.println("Press - 1  to show the Files");
+				System.out.println("");
+				System.out.println("Press - 2  for more options");
+				System.out.println("");
+				System.out.println("Press - 3  to exit the application ");
+				System.out.println("");
+				System.out.print("Input - ");
+				
+				Scanner sc = new Scanner(System.in);
+				int a = sc.nextInt();
+				if (a==1) {
+					while(true) {
+					ArrayList<String> list = fileLists();
+					for(String filename : list) 
+						System.out.println(filename);
+					
+					try {
+						System.out.println("");
+						System.out.println("Press 1 to go back" );
+						int b =  sc.nextInt();
+						if (b==1) {
+							break;
+						}
+						else {
+							System.out.println("Please press 1 if you need to go to main menu.");
+						}
+						
+					}catch(Exception e) {
+						System.out.println("Please give a valid input.");
+						sc.next();
+					}
+					}
+				}
+				
+				else if(a==2) {
+					while(true) {
+						System.out.println("PLEASE SELECT AN OPTION FROM THE MENU");
+						System.out.println("");
+						System.out.println("Press - 1  to add a File");
+						System.out.println("");
+						System.out.println("Press - 2  to delete a File");
+						System.out.println("");
+						System.out.println("Press - 3  to search a File ");
+						System.out.println("");
+						System.out.println("Press - 4  to go back to Main Menu ");
+						try{
+							int c= sc.nextInt();
+						
+							if(c==1) {
+								addFile();
+							}
+							else if(c==2) {
+								deleteFile();
+							}
+							else if(c==3) {
+								searchFile();
+							}
+							else if(c==4) {
+								break;
+							}
+							else {
+								System.out.println("Please enter a valid number from the menu");
+							}
+						}catch(Exception e) {
+							System.out.println("An error occured. Please give a valid input");
+						}
+					}
+					
+				}
+				else if(a==3) {
+					System.out.println("Thank you for using the application");
+					break;
+				}
+				else {
+					System.out.println("Please select one of the options from the Menu");
+					
+				}
+			
+			
+			}
+			catch(Exception e) {
+				System.out.println("Please enter a valid integer number as input.");
+			}	
+		}
+
+	}
+
+}

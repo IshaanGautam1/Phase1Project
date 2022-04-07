@@ -1,0 +1,30 @@
+
+public class MyProjectMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		while(true) {
+			
+			System.out.println("--------  LockedMe.com  --------");
+			System.out.println("");
+			System.out.println("            developed by- Ishaan Gautam");
+			System.out.println();
+			System.out.println();
+			System.out.println("-----------MAIN MENU-----------"); 
+			System.out.println("");
+			System.out.println("PLEASE SELECT AN OPTION FROM THE MENU");
+			System.out.println("");
+			System.out.println("Press - 1  to show the Files");
+			System.out.println("");
+			System.out.println("Press - 2  for more options");
+			System.out.println("");
+			System.out.println("Press - 3  to exit the application ");
+			
+			break;
+			
+			
+		}
+
+	}
+
+}
